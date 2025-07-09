@@ -98,7 +98,33 @@ sudo apt install -y ffmpeg libavcodec-extra vorbis-tools
 # Actualizar sistema y paquetes
 sudo apt update && sudo apt dist-upgrade -y
 
+echo ""
+echo "🧠 Instalando kernel y firmware AMD desde backports..."
+sudo apt install -y -t bookworm-backports linux-image-amd64 firmware-amd-graphics
 
+echo ""
+echo "♻️ Regenerando initramfs..."
+sudo update-initramfs -u
+
+echo ""
+echo "🌐 Instalando entorno gráfico Wayland (Sway + complementos)..."
+sudo apt install -y sway waybar xwayland tofi
+
+echo ""
+echo "🔊 Instalando sistema de audio moderno (PipeWire)..."
+sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
+
+echo ""
+echo "📸 Instalando soporte para cámaras (libcamera)..."
+sudo apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
+
+echo ""
+echo "🌐 Instalando NetworkManager..."
+sudo apt install -y network-manager
+
+# Habilitar NetworkManager si aún no está
+sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
 
 # Actualizar la lista de paquetes
 sudo apt update
