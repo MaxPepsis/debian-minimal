@@ -108,7 +108,7 @@ sudo update-initramfs -u
 
 echo ""
 echo "🌐 Instalando entorno gráfico Wayland (Sway + complementos)..."
-sudo apt install -y sway waybar xwayland tofi
+sudo apt install -y sway xwayland
 
 echo ""
 echo "🔊 Instalando sistema de audio moderno (PipeWire)..."
