@@ -99,10 +99,6 @@ sudo apt install -y ffmpeg libavcodec-extra vorbis-tools
 sudo apt update && sudo apt dist-upgrade -y
 
 echo ""
-echo "🧠 Instalando kernel y firmware AMD desde backports..."
-sudo apt install -y -t bookworm-backports linux-image-amd64 firmware-amd-graphics
-
-echo ""
 echo "♻️ Regenerando initramfs..."
 sudo update-initramfs -u
 
