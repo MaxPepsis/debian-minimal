@@ -6,35 +6,35 @@
 sources_file="/etc/apt/sources.list"
 
 # Vaciar el archivo sources.list
-echo "" | sudo tee $sources_file > /dev/null
+echo "" | tee $sources_file > /dev/null
 
 # Añadir los nuevos repositorios con espacio entre líneas
-echo "# Repositorios principales de Debian Bookworm" | sudo tee -a $sources_file > /dev/null
-echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
-echo "deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
+echo "# Repositorios principales de Debian Bookworm" | tee -a $sources_file > /dev/null
+echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
+echo "deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
 
 # Espacio entre secciones
-echo "" | sudo tee -a $sources_file > /dev/null
+echo "" | tee -a $sources_file > /dev/null
 
-echo "# Repositorios de seguridad de Debian" | sudo tee -a $sources_file > /dev/null
-echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
-echo "deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
-
-# Espacio entre secciones
-echo "" | sudo tee -a $sources_file > /dev/null
-
-echo "# Actualizaciones de Debian Bookworm" | sudo tee -a $sources_file > /dev/null
-echo "deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
-echo "deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
+echo "# Repositorios de seguridad de Debian" | tee -a $sources_file > /dev/null
+echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
+echo "deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
 
 # Espacio entre secciones
-echo "" | sudo tee -a $sources_file > /dev/null
+echo "" | tee -a $sources_file > /dev/null
 
-echo "# Repositorios de Backports (si los necesitas)" | sudo tee -a $sources_file > /dev/null
-echo "deb http://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware" | sudo tee -a $sources_file > /dev/null
+echo "# Actualizaciones de Debian Bookworm" | tee -a $sources_file > /dev/null
+echo "deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
+echo "deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
 
 # Espacio entre secciones
-echo "" | sudo tee -a $sources_file > /dev/null
+echo "" | tee -a $sources_file > /dev/null
+
+echo "# Repositorios de Backports (si los necesitas)" | tee -a $sources_file > /dev/null
+echo "deb http://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware" | tee -a $sources_file > /dev/null
+
+# Espacio entre secciones
+echo "" | tee -a $sources_file > /dev/null
 
 
 
@@ -77,42 +77,42 @@ fi
 
 
 # Actualizar sistema y paquetes
-sudo apt update && sudo apt dist-upgrade -y
+apt update && apt dist-upgrade -y
 
 # Crear los directorios clásicos
-sudo apt install xdg-user-dirs
+apt install xdg-user-dirs
 
 echo "Actualizando directorios XDG para el usuario: $usuario"
 
 # Ejecutar el comando como el usuario original
-sudo -u "$usuario" XDG_RUNTIME_DIR="/run/user/$uid" xdg-user-dirs-update
+-u "$usuario" XDG_RUNTIME_DIR="/run/user/$uid" xdg-user-dirs-update
 
 # Instalar herramientas de monitoreo y sistema
-sudo apt install -y htop
+apt install -y htop
 
 # Instalar soporte para sistemas de archivos
-sudo apt install -y exfat-fuse hfsplus hfsutils ntfs-3g
+apt install -y exfat-fuse hfsplus hfsutils ntfs-3g
 
 # Instalar herramientas de compresión
-sudo apt install -y p7zip-full p7zip-rar rar unrar zip unzip tar gzip xz-utils
+apt install -y p7zip-full p7zip-rar rar unrar zip unzip tar gzip xz-utils
 
 # Instalar utilidades básicas
-sudo apt install -y wget curl
+apt install -y wget curl
 
 # Instalar herramientas de desarrollo y compilación
-sudo apt install -y build-essential checkinstall make automake cmake autoconf git git-core
+apt install -y build-essential checkinstall make automake cmake autoconf git git-core
 
 # Instalar btop para monitoreo de recursos
-sudo apt install -y btop
+apt install -y btop
 
 # Instalar herramientas multimedia básicas
-sudo apt install -y ffmpeg libavcodec-extra vorbis-tools
+apt install -y ffmpeg libavcodec-extra vorbis-tools
 
 # Actualizar sistema y paquetes
-sudo apt update && sudo apt dist-upgrade -y
+apt update && apt dist-upgrade -y
 
 # Instalar sway
-sudo apt install -y sway xwayland swaylock
+apt install -y sway xwayland swaylock
 
 # Esperar a que sway cree su archivo de configuración
 timeout=10
@@ -141,27 +141,27 @@ echo "¡Listo! Configuraciones copiadas."
 
 
 # 🔊 Instalando sistema de audio moderno (PipeWire)...
-sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
+apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
 
 # Instalar controlador de brillo
-sudo apt install brightnessctl
+apt install brightnessctl
 
 # Instalar capturador de pantallas
-sudo apt install grim wl-clipboard libnotify-bin
+apt install grim wl-clipboard libnotify-bin
 
 # Instalando soporte para cámaras (libcamera)...
-sudo apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
+apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
 
 # Instalando NetworkManager...
-sudo apt install -y network-manager
+apt install -y network-manager
 
 # Actualizar la lista de paquetes
-sudo apt update
+apt update
 
 #-----Limpiar basuras-----
 
-sudo apt autoremove --purge -y
-sudo apt autoremove
+apt autoremove --purge -y
+apt autoremove
 
 # Limpiar archivos temporales
-sudo apt autoclean
+apt autoclean
