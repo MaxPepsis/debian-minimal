@@ -74,6 +74,10 @@ fi
 # Actualizar sistema y paquetes
 sudo apt update && sudo apt dist-upgrade -y
 
+# Crear los directorios clásicos
+sudo apt install xdg-user-dirs
+xdg-user-dirs-update
+
 # Instalar herramientas de monitoreo y sistema
 sudo apt install -y neofetch htop
 
@@ -114,6 +118,9 @@ sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-
 
 # Instalar controlador de brillo
 sudo apt install brightnessctl
+
+# Instalar capturador de pantallas
+sudo apt install grim wl-clipboard libnotify-bin
 
 # Instalando soporte para cámaras (libcamera)...
 sudo apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
