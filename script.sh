@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#-----Añadir los repositorios-----
+#-----Añadir los repositorios de debian12 bookworm-----
 
 # Ruta al archivo sources.list
 sources_file="/etc/apt/sources.list"
@@ -100,6 +100,14 @@ sudo apt update && sudo apt dist-upgrade -y
 
 # Instalando entorno gráfico Wayland (Sway + complementos)
 sudo apt install -y sway xwayland swaylock
+
+# Crear la copia de la configuracion predeterminada de Sway
+mkdir -p ~/.config/sway
+cp /etc/sway/config ~/.config/sway/config
+
+# Crear la copia de la configuracion predeterminada de la terminal Foot
+mkdir -p ~/.config/foot
+cp /etc/xdg/foot/foot.ini ~/.config/foot/foot.ini
 
 # 🔊 Instalando sistema de audio moderno (PipeWire)...
 sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
