@@ -79,7 +79,7 @@ sudo apt install xdg-user-dirs
 xdg-user-dirs-update
 
 # Instalar herramientas de monitoreo y sistema
-sudo apt install -y neofetch htop
+sudo apt install -y htop
 
 # Instalar soporte para sistemas de archivos
 sudo apt install -y exfat-fuse hfsplus hfsutils ntfs-3g
@@ -91,7 +91,7 @@ sudo apt install -y p7zip-full p7zip-rar rar unrar zip unzip tar gzip xz-utils
 sudo apt install -y wget curl
 
 # Instalar herramientas de desarrollo y compilación
-sudo apt install -y build-essential checkinstall make automake cmake autoconf git git-core dpkg
+sudo apt install -y build-essential checkinstall make automake cmake autoconf git git-core
 
 # Instalar btop para monitoreo de recursos
 sudo apt install -y btop
