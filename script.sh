@@ -112,6 +112,9 @@ cp /etc/xdg/foot/foot.ini ~/.config/foot/foot.ini
 # 🔊 Instalando sistema de audio moderno (PipeWire)...
 sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
 
+# Instalar controlador de brillo
+sudo apt install brightnessctl
+
 # Instalando soporte para cámaras (libcamera)...
 sudo apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
 
