@@ -85,11 +85,6 @@ apt install sudo -y
 # Crear los directorios clásicos
 apt install xdg-user-dirs -y
 
-echo "Actualizando directorios XDG para el usuario: $usuario"
-
-# Ejecutar el comando como el usuario original
-runuser -u "$usuario" -- env XDG_RUNTIME_DIR="/run/user/$uid" xdg-user-dirs-update
-
 # Instalar herramientas de monitoreo y sistema
 apt install -y htop
 
