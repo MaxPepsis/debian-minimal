@@ -111,24 +111,34 @@ sudo apt install -y ffmpeg libavcodec-extra vorbis-tools
 # Actualizar sistema y paquetes
 sudo apt update && sudo apt dist-upgrade -y
 
-# Instalando entorno gráfico Wayland (Sway + complementos)
+# Instalar sway
 sudo apt install -y sway xwayland swaylock
 
-echo "Configurando sway y foot para el usuario: $usuario"
-echo "Home detectado: $home_dir"
+# Esperar a que sway cree su archivo de configuración
+timeout=10
+while [ ! -f /etc/sway/config ] && [ $timeout -gt 0 ]; do
+    echo "Esperando que /etc/sway/config esté disponible..."
+    sleep 1
+    timeout=$((timeout - 1))
+done
 
-# Crear configuración predeterminada de Sway
+if [ ! -f /etc/sway/config ]; then
+    echo "ERROR: No se encontró /etc/sway/config después de esperar. Abortando."
+    exit 1
+fi
+
+# Crear configuración predeterminada
+echo "Configurando sway y foot para el usuario: $usuario"
 mkdir -p "$home_dir/.config/sway"
 cp -n /etc/sway/config "$home_dir/.config/sway/config"
 
-# Crear configuración predeterminada de Foot
 mkdir -p "$home_dir/.config/foot"
 cp -n /etc/xdg/foot/foot.ini "$home_dir/.config/foot/foot.ini"
 
-# Cambiar el dueño de los archivos copiados
 chown -R "$usuario:$usuario" "$home_dir/.config/sway" "$home_dir/.config/foot"
 
 echo "¡Listo! Configuraciones copiadas."
+
 
 # 🔊 Instalando sistema de audio moderno (PipeWire)...
 sudo apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
