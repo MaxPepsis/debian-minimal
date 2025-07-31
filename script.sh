@@ -79,8 +79,11 @@ fi
 # Actualizar sistema y paquetes
 apt update && apt dist-upgrade -y
 
+# Instalar sudo para que el usuario tenga permisos de administrador
+apt install sudo -y
+
 # Crear los directorios clásicos
-apt install xdg-user-dirs
+apt install xdg-user-dirs -y
 
 echo "Actualizando directorios XDG para el usuario: $usuario"
 
@@ -144,10 +147,10 @@ echo "¡Listo! Configuraciones copiadas."
 apt install -y pipewire pipewire-audio-client-libraries wireplumber libspa-0.2-bluetooth
 
 # Instalar controlador de brillo
-apt install brightnessctl
+apt install brightnessctl -y
 
 # Instalar capturador de pantallas
-apt install grim wl-clipboard libnotify-bin
+apt install grim wl-clipboard libnotify-bin -y
 
 # Instalando soporte para cámaras (libcamera)...
 apt install -y libcamera-tools libcamera-ipa libcamera-v4l2
