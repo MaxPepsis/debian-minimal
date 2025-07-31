@@ -49,6 +49,9 @@ fi
 # Obtener el nombre del usuario real que ejecutó el script (no root)
 usuario=$(logname)
 
+# Obtener el UID del usuario
+uid=$(id -u "$usuario")
+
 # Mostrar el usuario actual
 echo "El script se está ejecutando como: $usuario"
 
@@ -76,7 +79,11 @@ sudo apt update && sudo apt dist-upgrade -y
 
 # Crear los directorios clásicos
 sudo apt install xdg-user-dirs
-xdg-user-dirs-update
+
+echo "Actualizando directorios XDG para el usuario: $usuario"
+
+# Ejecutar el comando como el usuario original
+sudo -u "$usuario" XDG_RUNTIME_DIR="/run/user/$uid" xdg-user-dirs-update
 
 # Instalar herramientas de monitoreo y sistema
 sudo apt install -y htop
